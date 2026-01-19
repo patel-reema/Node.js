@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>To-Do List</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(120deg, #667eea, #764ba2);
+
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin-top: 40px;
+
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .form-box {
+            width: 420px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #fdfbfb, #ebedee);
+            padding: 22px;
+            border-radius: 14px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-box table {
+            width: 100%;
+        }
+
+        .form-box td {
+            padding: 8px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 70px;
+            resize: vertical;
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid #bbb;
+            font-family: inherit;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid #bbb;
+            font-size: 14px;
+        }
+
+        input[type="submit"] {
+            background: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        input[type="submit"]:hover {
+            background: #218838;
+        }
+
+        .table-box {
+            width: 100%;
+            background: linear-gradient(135deg, #ffffff, #f3f6ff);
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .task-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .task-card {
+            background: linear-gradient(135deg, #ffffff, #eef2ff);
+            border-radius: 14px;
+            padding: 18px;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+            transition: transform 0.2s ease;
+        }
+
+        .task-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .task-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .task-no {
+            font-weight: bold;
+            color: #6c63ff;
+        }
+
+        .task-date {
+            background: #dfe3ff;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        .task-card h3 {
+            margin: 8px 0;
+            color: #2c3e50;
+        }
+
+        .task-card p {
+            font-size: 14px;
+            color: #444;
+            margin-bottom: 15px;
+            max-width: 100%;
+            white-space: normal;
+            max-height: 120px;
+            overflow-y: auto;
+        }
+
+        .task-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .task-actions a {
+            text-decoration: none;
+            padding: 6px 14px;
+            border-radius: 8px;
+            color: white;
+            font-size: 13px;
+        }
+
+        .task-actions .edit {
+            background: #f1c40f;
+            color: #000;
+        }
+
+        .task-actions .delete {
+            background: #e74c3c;
+        }
+
+        .task-actions a:hover {
+            opacity: 0.85;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="form-box">
+            <h2>Add Task</h2>
+
+            <form action="/add-task" method="post">
+                <table>
+                    <tr>
+                        <td>No</td>
+                        <td><input type="number" name="no" placeholder="Task No"></td>
+                    </tr>
+                    <tr>
+                        <td>Task Name</td>
+                        <td><input type="text" name="tname" placeholder="Task Name"></td>
+                    </tr>
+                    <tr>
+                        <td>Description</td>
+                        <td><textarea name="tdes" placeholder="Enter Description"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>End date</td>
+                        <td><input type="date" name="tdate"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Add Task"></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+
+        <!-- TASK LIST -->
+        <div class="table-box">
+            <h2>Task List</h2>
+
+            <div class="task-container">
+                <% tasks.forEach(task=> { %>
+                    <div class="task-card">
+                        <div class="task-header">
+                            <span class="task-no">#<%= task.no %></span>
+                            <span class="task-date">
+                                <%= task.tdate %>
+                            </span>
+                        </div>
+
+                        <h3>
+                            <%= task.tname %>
+                        </h3>
+                        <p>
+                            <%= task.tdes %>
+                        </p>
+
+                        <div class="task-actions">
+                            <a href="/edit-task/<%= task.no %>" class="edit">Edit</a>
+                            <a href="/delete-task/<%= task.no %>" class="delete">Delete</a>
+                        </div>
+                    </div>
+                    <% }) %>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
