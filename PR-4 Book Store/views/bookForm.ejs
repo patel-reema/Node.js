@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Store</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Inter", sans-serif;
+            background: #eef1f6;
+            color: #1f2933;
+        }
+
+        center {
+            padding: 40px 20px;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 34px;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+        form {
+            background: white;
+            padding: 28px 34px;
+            border-radius: 22px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            display: inline-block;
+            margin-bottom: 40px;
+            transform: translateY(0);
+            transition: 0.3s;
+        }
+
+        form:hover {
+            transform: translateY(-4px);
+        }
+
+        td {
+            padding: 12px;
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="file"] {
+            width: 240px;
+            padding: 10px 12px;
+            border-radius: 12px;
+            border: 1px solid #d9dee5;
+            background: #f9fbfd;
+            font-size: 14px;
+            transition: 0.25s;
+        }
+
+        input:focus {
+            border-color: #6366f1;
+            background: white;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+        }
+
+        input[type="submit"] {
+            background: #111827;
+            color: white;
+            border: none;
+            padding: 11px 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        input[type="submit"]:hover {
+            background: #374151;
+            transform: scale(1.05);
+        }
+
+        a {
+            text-decoration: none;
+            padding: 8px 14px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            color: white;
+            display: inline-block;
+            transition: 0.25s;
+        }
+
+        a[href*="edit"] {
+            background: #2563eb;
+        }
+
+        a[href*="delete"] {
+            background: #dc2626;
+        }
+
+        a[href="/"] {
+            background: #6b7280;
+        }
+
+        a:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        table {
+            width: 95%;
+            margin: auto;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            border-collapse: collapse;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+        }
+
+        th {
+            background: #111827;
+            color: white;
+            padding: 14px;
+            font-size: 15px;
+        }
+
+        td {
+            padding: 14px;
+            border-bottom: 1px solid #eef2f7;
+        }
+
+        tbody tr:hover {
+            background: #f3f6fb;
+        }
+
+        img {
+            border-radius: 10px;
+            width: 90px;
+            object-fit: cover;
+            transition: 0.3s;
+        }
+
+        img:hover {
+            transform: scale(1.1);
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <center>
+        <h2>Book Store</h2>
+        <form action="/add-book" method="post" enctype="multipart/form-data">
+            <table>
+                <tr>
+                    <td>Title: </td>
+                    <td><input type="text" name="title"></td>
+                </tr>
+                <tr>
+                    <td>Author: </td>
+                    <td><input type="text" name="author"></td>
+                </tr>
+                <tr>
+                    <td>Category: </td>
+                    <td><input type="text" name="category"></td>
+                </tr>
+                <tr>
+                    <td>Price: </td>
+                    <td><input type="number" name="price"></td>
+                </tr>
+                <tr>
+                    <td>Picture: </td>
+                    <td><input type="file" name="imgBook"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="ADD"></td>
+                </tr>
+            </table>
+        </form>
+
+
+
+        <table cellpadding="5" border="1">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Picture</th>
+                    <th colspan="2">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% books.forEach((book, i)=>{ %>
+                    <tr>
+                        <td>
+                            <%= i+1 %>
+                        </td>
+                        <td>
+                            <%= book.title %>
+                        </td>
+                        <td>
+                            <%= book.author %>
+                        </td>
+                        <td>
+                            <%= book.category %>
+                        </td>
+                        <td>
+                            <%= book.price %>
+                        </td>
+                        <td><img src="<%= book.imgBook %>" width="100"></td>
+                        <td><a href="/edit-book/<%= book._id%>">Edit</a></td>
+                        <td><a href="/delete-book/<%= book._id%>">Delete</a></td>
+                    </tr>
+                    <% }) %>
+            </tbody>
+        </table>
+    </center>
+</body>
+
+</html>
