@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit page</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <center>
+        <h2>Upadte Movie Page</h2>
+        <form action="/update-movie/<%= movies._id %>" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="id" value="<%= movies._id %>">
+
+            <table>
+                <tr>
+                    <td>Title:</td>
+                    <td><input type="text" name="title" value="<%= movies.title %>"></td>
+                </tr>
+                <tr>
+                    <td>Description:</td>
+                    <td><input type="text" name="description" value="<%= movies.description %>"></td>
+                </tr>
+
+                <tr>
+                    <td>Genre:</td>
+                    <td><input type="text" name="genre" value="<%= movies.genre %>"></td>
+                </tr>
+
+                <tr>
+                    <td>Duration:</td>
+                    <td><input type="text" name="duration" value="<%= movies.duration %>"></td>
+                </tr>
+
+                <tr>
+                    <td>Poster:</td>
+                    <td><input type="file" name="imgMovie"></td>
+                </tr>
+
+                <tr>
+                    <td><a href="/">Back</a></td>
+                    <td><input type="submit" value="UPDATE"></td>
+                </tr>
+            </table>
+        </form>
+    </center>
+</body>
+
+</html>

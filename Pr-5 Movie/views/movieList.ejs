@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie List</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <center>
+        <header>
+            <a href="/">Movie List</a>
+            <a href="/add">Add Movie</a>
+        </header>
+
+        <h2>Movie List</h2>
+
+        <div class="movie-container">
+
+            <% movies.forEach(movie=> { %>
+
+                <div class="movie-card">
+
+                    <img src="<%= movie.imgMovie %>">
+
+                    <div class="movie-info">
+                        <h3>
+                            <%= movie.title %>
+                        </h3>
+                        <p>
+                            <%= movie.description %>
+                        </p>
+                        <p>
+                            <%= movie.genre %>
+                        </p>
+                        <p>
+                            <%= movie.duration %>
+                        </p>
+
+                        <div class="actions">
+                            <a class="edit-btn" href="/edit-movie/<%= movie._id %>">Edit</a>
+                            <a class="delete-btn" href="/delete-movie/<%= movie._id %>">Delete</a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <% }) %>
+
+        </div>
+
+    </center>
+</body>
+
+</html>
