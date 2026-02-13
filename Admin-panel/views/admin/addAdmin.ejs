@@ -3,123 +3,129 @@
     <!-- Page wrapper  -->
     <!-- ============================================================== -->
     <div class="page-wrapper">
-        <!-- ============================================================== -->
-        <!-- Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
+
         <div class="page-breadcrumb">
             <div class="row">
                 <div class="col-12 d-flex no-block align-items-center">
-                    <h4 class="page-title">Add Admin</h4>
-                    <div class="ml-auto text-right">
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Library</li>
-                            </ol>
-                        </nav>
-                    </div>
+                    <h4 class="page-title">
+                        <%= admin ? "Edit Admin" : "Add Admin" %>
+                    </h4>
                 </div>
             </div>
         </div>
-        <!-- ============================================================== -->
-        <!-- End Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Container fluid  -->
-        <!-- ============================================================== -->
+
         <div class="container-fluid">
-            <!-- ============================================================== -->
-            <!-- Start Page Content -->
-            <!-- ============================================================== -->
+
             <div class="row">
                 <div class="col-md-6">
+
                     <div class="card">
-                        <form class="form-horizontal" action="/admin/add-admin" method="post"
-                            enctype="multipart/form-data">
+
+                        <form class="form-horizontal"
+                            action="<%= admin ? '/admin/update-admin/' + admin._id : '/admin/add-admin' %>"
+                            method="post" enctype="multipart/form-data">
+
                             <div class="card-body">
+
                                 <h4 class="card-title">Admin Info</h4>
+
+                                <!-- First Name -->
                                 <div class="form-group row">
-                                    <label for="fname" class="col-sm-3 text-right control-label col-form-label">First
-                                        Name</label>
+                                    <label class="col-sm-3 text-right col-form-label">First Name</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="firstname" class="form-control" id="fname"
-                                            placeholder="First Name Here">
+                                        <input type="text" name="firstname" class="form-control"
+                                            value="<%= admin ? admin.firstname : '' %>" placeholder="First Name">
                                     </div>
                                 </div>
+
+                                <!-- Last Name -->
                                 <div class="form-group row">
-                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Last
-                                        Name</label>
+                                    <label class="col-sm-3 text-right col-form-label">Last Name</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="lastname" class="form-control" id="lname"
-                                            placeholder="Last Name Here">
+                                        <input type="text" name="lastname" class="form-control"
+                                            value="<%= admin ? admin.lastname : '' %>" placeholder="Last Name">
                                     </div>
                                 </div>
+
+                                <!-- Email -->
                                 <div class="form-group row">
-                                    <label for="email1"
-                                        class="col-sm-3 text-right control-label col-form-label">Email</label>
+                                    <label class="col-sm-3 text-right col-form-label">Email</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="email" class="form-control" id="email1"
-                                            placeholder="Email Here">
+                                        <input type="email" name="email" class="form-control"
+                                            value="<%= admin ? admin.email : '' %>" placeholder="Email">
                                     </div>
                                 </div>
+
+                                <!-- Password -->
                                 <div class="form-group row">
-                                    <label for="lname"
-                                        class="col-sm-3 text-right control-label col-form-label">Password</label>
+                                    <label class="col-sm-3 text-right col-form-label">Password</label>
                                     <div class="col-sm-9">
-                                        <input type="password" name="password" class="form-control" id="password"
-                                            placeholder="Password Here">
+                                        <input type="password" name="password" class="form-control"
+                                            placeholder="<%= admin ? 'Leave blank to keep old password' : 'Enter password' %>">
                                     </div>
                                 </div>
+
+                                <!-- Gender -->
                                 <div class="form-group row">
-                                    <label class="col-md-3">Gender</label>
-                                    <div class="col-md-9">
-                                        <div class="custom-control custom-checkbox mr-sm-2">
-                                            <input type="checkbox" class="custom-control-input"
-                                                id="customControlAutosizing1">
-                                            <label class="custom-control-label" for="customControlAutosizing1">First
-                                                One</label>
-                                        </div>
-                                        <div class="custom-control custom-checkbox mr-sm-2">
-                                            <input type="checkbox" class="custom-control-input"
-                                                id="customControlAutosizing2">
-                                            <label class="custom-control-label" for="customControlAutosizing2">Second
-                                                One</label>
-                                        </div>
-                                        <div class="custom-control custom-checkbox mr-sm-2">
-                                            <input type="checkbox" class="custom-control-input"
-                                                id="customControlAutosizing3">
-                                            <label class="custom-control-label" for="customControlAutosizing3">Third
-                                                One</label>
-                                        </div>
+                                    <label class="col-sm-3 text-right col-form-label">Gender</label>
+                                    <div class="col-sm-9">
+
+                                        <label class="mr-3">
+                                            <input type="radio" name="gender" value="male" <%=admin &&
+                                                admin.gender==='male' ? 'checked' : '' %>> Male
+                                        </label>
+
+                                        <label>
+                                            <input type="radio" name="gender" value="female" <%=admin &&
+                                                admin.gender==='female' ? 'checked' : '' %>> Female
+                                        </label>
+
                                     </div>
                                 </div>
+
+                                <!-- Contact -->
                                 <div class="form-group row">
-                                    <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Contact
-                                        No</label>
+                                    <label class="col-sm-3 text-right col-form-label">Contact No</label>
                                     <div class="col-sm-9">
-                                        <input type="number" name="ContactNo" class="form-control" id="cono1"
-                                            placeholder="Contact No Here">
+                                        <input type="number" name="ContactNo" class="form-control"
+                                            value="<%= admin ? admin.ContactNo : '' %>" placeholder="Contact Number">
                                     </div>
                                 </div>
+
+                                <!-- Profile Image -->
                                 <div class="form-group row">
-                                    <label class="col-sm-3 text-right">Profile Image</label>
+                                    <label class="col-sm-3 text-right col-form-label">Profile Image</label>
                                     <div class="col-sm-9">
+
                                         <input type="file" name="profileImg" class="form-control">
+
+                                        <% if(admin && admin.profileimg) { %>
+                                            <br>
+                                            <img src="<%= admin.profileimg %>" width="100" class="rounded">
+                                            <% } %>
+
                                     </div>
                                 </div>
+
                             </div>
+
                             <div class="border-top">
                                 <div class="card-body">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn-primary">
+
+                                        <%= admin ? "Update Admin" : "Add Admin" %>
+
+                                    </button>
                                 </div>
                             </div>
+
                         </form>
+
                     </div>
                 </div>
-
             </div>
+
         </div>
-        <!-- ============================================================== -->
-        <!-- End Container fluid  -->
-        <!-- ============================================================== -->
-        <%- include('../footer')%>
+
+    </div>
+    <%- include('../footer')%>
