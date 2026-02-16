@@ -1,9 +1,5 @@
 <%- include('../header')%>
-    <!-- ============================================================== -->
-    <!-- Page wrapper  -->
-    <!-- ============================================================== -->
     <div class="page-wrapper">
-
         <div class="page-breadcrumb">
             <div class="row">
                 <div class="col-12 d-flex no-block align-items-center">
@@ -13,23 +9,15 @@
                 </div>
             </div>
         </div>
-
         <div class="container-fluid">
-
             <div class="row">
                 <div class="col-md-6">
-
                     <div class="card">
-
                         <form class="form-horizontal"
                             action="<%= admin ? '/admin/update-admin/' + admin._id : '/admin/add-admin' %>"
                             method="post" enctype="multipart/form-data">
-
                             <div class="card-body">
-
                                 <h4 class="card-title">Admin Info</h4>
-
-                                <!-- First Name -->
                                 <div class="form-group row">
                                     <label class="col-sm-3 text-right col-form-label">First Name</label>
                                     <div class="col-sm-9">
@@ -37,8 +25,6 @@
                                             value="<%= admin ? admin.firstname : '' %>" placeholder="First Name">
                                     </div>
                                 </div>
-
-                                <!-- Last Name -->
                                 <div class="form-group row">
                                     <label class="col-sm-3 text-right col-form-label">Last Name</label>
                                     <div class="col-sm-9">
@@ -46,8 +32,6 @@
                                             value="<%= admin ? admin.lastname : '' %>" placeholder="Last Name">
                                     </div>
                                 </div>
-
-                                <!-- Email -->
                                 <div class="form-group row">
                                     <label class="col-sm-3 text-right col-form-label">Email</label>
                                     <div class="col-sm-9">
@@ -55,8 +39,6 @@
                                             value="<%= admin ? admin.email : '' %>" placeholder="Email">
                                     </div>
                                 </div>
-
-                                <!-- Password -->
                                 <div class="form-group row">
                                     <label class="col-sm-3 text-right col-form-label">Password</label>
                                     <div class="col-sm-9">
@@ -64,9 +46,7 @@
                                             placeholder="<%= admin ? 'Leave blank to keep old password' : 'Enter password' %>">
                                     </div>
                                 </div>
-
-                                <!-- Gender -->
-                                <div class="form-group row">
+                               <div class="form-group row">
                                     <label class="col-sm-3 text-right col-form-label">Gender</label>
                                     <div class="col-sm-9">
 
@@ -74,16 +54,12 @@
                                             <input type="radio" name="gender" value="male" <%=admin &&
                                                 admin.gender==='male' ? 'checked' : '' %>> Male
                                         </label>
-
                                         <label>
                                             <input type="radio" name="gender" value="female" <%=admin &&
                                                 admin.gender==='female' ? 'checked' : '' %>> Female
                                         </label>
-
                                     </div>
                                 </div>
-
-                                <!-- Contact -->
                                 <div class="form-group row">
                                     <label class="col-sm-3 text-right col-form-label">Contact No</label>
                                     <div class="col-sm-9">
@@ -91,41 +67,30 @@
                                             value="<%= admin ? admin.ContactNo : '' %>" placeholder="Contact Number">
                                     </div>
                                 </div>
-
-                                <!-- Profile Image -->
                                 <div class="form-group row">
                                     <label class="col-sm-3 text-right col-form-label">Profile Image</label>
                                     <div class="col-sm-9">
 
-                                        <input type="file" name="profileImg" class="form-control">
+                                        <input type="file" name="profileimg" class="form-control">
 
                                         <% if(admin && admin.profileimg) { %>
                                             <br>
                                             <img src="<%= admin.profileimg %>" width="100" class="rounded">
                                             <% } %>
-
                                     </div>
                                 </div>
-
                             </div>
-
                             <div class="border-top">
                                 <div class="card-body">
                                     <button type="submit" class="btn btn-primary">
-
                                         <%= admin ? "Update Admin" : "Add Admin" %>
-
                                     </button>
                                 </div>
                             </div>
-
                         </form>
-
                     </div>
                 </div>
             </div>
-
         </div>
-
     </div>
     <%- include('../footer')%>

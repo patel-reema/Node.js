@@ -7,7 +7,7 @@ const adminSchema = mongoose.Schema({
     password: String,
     gender: {
         type: String,
-        enum: ['Male', 'Female']
+        enum: ['male', 'female']
     },
     ContactNo: String,
     profileimg: String

@@ -1,11 +1,5 @@
 <%- include('../header') %>
-    <!-- ============================================================== -->
-    <!-- Page wrapper  -->
-    <!-- ============================================================== -->
     <div class="page-wrapper">
-        <!-- ============================================================== -->
-        <!-- Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
         <div class="page-breadcrumb">
             <div class="row">
                 <div class="col-12 d-flex no-block align-items-center">
@@ -21,16 +15,7 @@
                 </div>
             </div>
         </div>
-        <!-- ============================================================== -->
-        <!-- End Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Container fluid  -->
-        <!-- ============================================================== -->
         <div class="container-fluid">
-            <!-- ============================================================== -->
-            <!-- Start Page Content -->
-            <!-- ============================================================== -->
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -47,43 +32,43 @@
                                     <th scope="col">Gender</th>
                                     <th scope="col">ContactNo.</th>
                                     <th scope="col">Profile Image</th>
-                                    <th scope="col">Contact No.</th>
                                     <th scope="col">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <% admins.forEach((admin, i)=>{ %>
                                     <tr>
-                                        <th scope="row"><%= i+1 %></th>
-                                        <td><%= admin.firstname %></td>
-                                        <td><%= admin.lastname %></td>
-                                        <td><%= admin.email %></td>
-                                        <td><%= admin.gender %></td>
-                                        <td><%= admin.ContactNo %></td>
+                                        <th scope="row">
+                                            <%= i+1 %>
+                                        </th>
+                                        <td>
+                                            <%= admin.firstname %>
+                                        </td>
+                                        <td>
+                                            <%= admin.lastname %>
+                                        </td>
+                                        <td>
+                                            <%= admin.email %>
+                                        </td>
+                                        <td>
+                                            <%= admin.gender %>
+                                        </td>
+                                        <td>
+                                            <%= admin.ContactNo %>
+                                        </td>
                                         <td><img src="<%= admin.profileimg %>" width="60" alt=""></td>
                                         <td>
-                                            <a href="/admin/edit-admin/<%= admin._id %>" class="btn btn-warning">EDIT</a>
-                                            <a href="/admin/delete-admin/<%= admin._id %>" class="btn btn-danger">DELETE</a>
+                                            <a href="/admin/edit-admin/<%= admin._id %>"
+                                                class="btn btn-warning">EDIT</a>
+                                            <a href="/admin/delete-admin/<%= admin._id %>"
+                                                class="btn btn-danger">DELETE</a>
                                         </td>
                                     </tr>
-                                <% })%>
+                                    <% })%>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-            <!-- ============================================================== -->
-            <!-- End PAge Content -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- Right sidebar -->
-            <!-- ============================================================== -->
-            <!-- .right-sidebar -->
-            <!-- ============================================================== -->
-            <!-- End Right sidebar -->
-            <!-- ============================================================== -->
         </div>
-        <!-- ============================================================== -->
-        <!-- End Container fluid  -->
-        <!-- ============================================================== -->
         <%- include('../footer')%>
