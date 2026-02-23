@@ -36,7 +36,7 @@ exports.addAdmin = async (req, res) => {
 }
 
 exports.viewAllAdmin = async (req, res) => {
-    try {
+    try {   
         if (req.cookies && req.cookies.admin && req.cookies.admin._id != undefined) {
             let admins = await Admin.find();
             let user = req.cookies.admin;
@@ -78,7 +78,7 @@ exports.editAdmin = async (req, res) => {
         console.log("Admin not found...");
         return res.redirect('/');
     }
-    return res.render('admin/addAdmin', { admin });
+    return res.render('admin/addAdmin', { admin }); 
 }
 
 exports.updateAdmin = async (req, res) => {

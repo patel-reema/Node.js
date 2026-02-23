@@ -14,7 +14,7 @@ app.use(express.static('public'));
 
 app.use('/uploads', express.static('uploads'));
 
-app.use('/', require('./routes/index.routes.js'))
+app.use('/', require('./routes/index.routes.js'));
 
 app.listen(8010, () => {
     console.log(`Server start at http://localhost:8010`);
