@@ -9,7 +9,7 @@ const adminSchema = mongoose.Schema({
         type: String,
         enum: ['male', 'female']
     },
-    ContactNo: String,
+    mobileNo: String,
     profileimg: String
 });
 
