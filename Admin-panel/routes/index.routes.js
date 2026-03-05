@@ -8,7 +8,7 @@ routes.post('/login', passport.authenticate('local', { failureRedirect: "/" }), 
 routes.get('/dashboard', passport.checkAuthenticate, dashboardPage);
 routes.get('/change-password', changePasswordPage)
 routes.post('/change-password', changePassword)
-routes.get('/my-profile', myProfile);
+routes.get('/view-profile', myProfile);
 routes.get('/logout', logout);
 
 routes.use('/admin', require('./admin.routes'));

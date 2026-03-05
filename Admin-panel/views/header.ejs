@@ -215,8 +215,9 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href=""
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <% if(locals.user.profileimg != "" ){ %>
-                                    <img src='<%= user.profileimg %>' alt="user" class="rounded-circle" width="31">
+                                <% if(locals.user.profileimg !="" ){ %>
+                                    <img src='<%= user.profileimg %>' alt="user" class="rounded-circle"
+                                        width="31">
                                     <% } else{ %>
                                         <img src="/assets/images/users/1.jpg" alt="user" class="rounded-circle"
                                             width="31">
@@ -233,8 +234,11 @@
                                 <a class="dropdown-item" href="/change-password"><i class="ti-settings m-r-5 m-l-5"></i>
                                     Change Password</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="/logout"><i
-                                        class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
+                                <a class="dropdown-item" href="/view-profile"><i class="ti-settings m-r-5 m-l-5"></i>
+                                    View Profile</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/logout"><i class="fa fa-power-off m-r-5 m-l-5"></i>
+                                    Logout</a>
                                 <div class="dropdown-divider"></div>
                             </div>
                         </li>
@@ -269,6 +273,18 @@
                                         </span></a></li>
                                 <li class="sidebar-item"><a href="/admin/view-admin" class="sidebar-link"><i
                                             class="mdi mdi-note-plus"></i><span class="hide-menu"> Admin List
+                                        </span></a></li>
+                            </ul>
+                        </li>
+                        <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark"
+                                href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span
+                                    class="hide-menu">Blogs </span></a>
+                            <ul aria-expanded="false" class="collapse  first-level">
+                                <li class="sidebar-item"><a href="/blog/add-blog" class="sidebar-link"><i
+                                            class="mdi mdi-note-outline"></i><span class="hide-menu"> Add Blog
+                                        </span></a></li>
+                                <li class="sidebar-item"><a href="/blog/view-blog" class="sidebar-link"><i
+                                            class="mdi mdi-note-plus"></i><span class="hide-menu"> View Blogs
                                         </span></a></li>
                             </ul>
                         </li>
