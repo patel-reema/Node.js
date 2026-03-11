@@ -73,7 +73,6 @@ exports.editAdmin = async (req, res) => {
 exports.updateAdmin = async (req, res) => {
     try {
         const id = req.params.id;
-
         const admin = await Admin.findById(id);
         if (!admin) {
             console.log("Admin not found");
