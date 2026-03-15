@@ -1,6 +1,16 @@
 const Category = require('../model/category.model');
 const SubCategory = require('../model/subCategory.model');
 
+exports.subCategories = async (req, res) => {
+    try {
+        let subcategories = await SubCategory.find({ categoryId: req.query.categoryId });
+        return res.json(subcategories);
+    } catch (error) {
+        console.log(error);
+        res.json('/');
+    }
+};
+
 exports.addSubcategoryPage = async (req, res) => {
     try {
         let categories = await Category.find();

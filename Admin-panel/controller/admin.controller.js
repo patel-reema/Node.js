@@ -21,7 +21,7 @@ exports.addAdmin = async (req, res) => {
             password: hashPass,
             profileimg: imgPath
         });
-        return res.redirect("/admin/add-admin");
+        return res.redirect("/admin/view-admin");
     } catch (error) {
         console.log(error);
         return res.redirect("/");
